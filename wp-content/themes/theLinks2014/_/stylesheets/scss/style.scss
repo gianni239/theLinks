@@ -1,0 +1,582 @@
+/* Imports
+============================================================================*/
+
+@import 'fonts';
+@import 'font-awesome';
+@import 'bootstrap/bootstrap';
+
+
+/* Variables
+============================================================================*/
+
+/* custom vars here */
+
+
+/* Mixins
+============================================================================*/
+
+@mixin transition-all ($duration) {
+	-webkit-transition: all $duration ease-out; 
+       -moz-transition: all $duration ease-out; 
+     	 -o-transition: all $duration ease-out; 
+     		transition: all $duration ease-out;
+}
+
+/* General Styles
+============================================================================*/
+body {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  color: #ccc;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: normal;
+  padding-bottom: 7px;
+  margin-bottom: 7px;
+  margin-top: 0px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: normal;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+p:last-child {
+  margin-bottom:0;
+}
+
+a {
+  color: #666;
+}
+
+a:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+
+blockquote {
+  font-size: 15px;
+}
+
+cite {
+  font-style: italic;
+}
+::selection {
+	display: none;
+}
+
+
+/* Header Stuff
+============================================================================*/
+.logo {
+  background-color: black;
+  opacity: 0.7;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+}
+header {
+	margin-bottom: 15px;
+	.logo, .navbar {
+		margin-top: 30px;
+	}
+}
+
+.navbar-default .navbar-nav > li.current-menu-item > a {
+	color: #000;
+}
+
+
+/* Navigation Styles
+============================================================================*/
+#header-nav {
+	> li {
+		> a {
+		  color: #666;
+		}
+		> a:hover {
+		  background-color: #fff;
+		}
+	}
+	> li.current-menu-item {
+		> a, > a:hover, > a:focus {
+		  background-color: #666;
+		  color: #fff;
+		}
+	}
+}
+.navbar {
+	border-radius: 4px;
+}
+.navbar-collapse {
+	border: none;
+}
+
+
+/* Content
+============================================================================*/
+.page-content {
+	background-color: black;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 15px;
+	border-radius: 4px;
+	margin-bottom: 30px;
+}
+
+
+/* Wireframe Placeholder Images
+============================================================================*/
+.placeholder {
+  background-color: #ccc;
+  color: #fff;
+  text-align: center;
+  padding: 0;
+  span {
+	  background-color: #ccc;
+	  padding: 5px;
+	  display: block;
+	  float: left;
+	}
+}
+.home-img {
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+
+/* Galleries
+============================================================================*/
+h1.gallery-heading { 
+	float:left; width:235px;
+}
+.gallery-links { 
+	float:left; 
+	width:235px; 
+	list-style:none; 
+	padding:0 0 10px; 
+	margin:0; 
+	li {
+		float:left;
+		width:100%;
+		padding:0; margin:0;
+	}
+	a {
+		float:left;
+		padding:3px 0 3px 16px;
+	}
+}
+.gallery-thumbs {
+	background-color: black;
+	background-color: rgba(0, 2, 0, 0.7);
+	color: white; padding: 15px;
+	border-radius: 4px;
+	margin-bottom: 30px;
+	width: 101px;
+	.scroll-left, .scroll-right {
+		cursor: pointer;
+		color: #999;
+	}
+	.inactive {
+		color: #555;
+		cursor: default;
+	}
+	.mask {
+		position:relative;
+		width:100px;
+		height:144px;
+		overflow:hidden;
+		ul {
+			position:absolute;
+			top:0;
+			left:0;
+			width:1000px;
+			padding:0;
+			margin:0;
+			list-style:none;
+			li {
+				padding:4px 0;
+				cursor:pointer;
+			}
+		}
+	}
+}
+.gallery-viewfinder {
+	position:fixed;
+  _position:absolute;
+  top:0;
+  _top:expression(eval(document.body.scrollTop));
+	
+	//position:fixed;
+	top:0;
+	left:0;
+	overflow:hidden;
+	z-index: -99;
+	ul {
+		position:absolute;
+		top:0;
+		left:0;
+		float:left;
+		margin:0;
+		padding:0;
+		list-style:none;
+		li {
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:1;
+			float:left;
+			margin:0;
+			padding:0;
+			img {
+				float:left;
+				margin:0;
+				padding:0;
+			}
+		}
+		li.current {
+			z-index:10;
+		}
+		li.next {
+			z-index:9;
+		}
+	}
+}
+.gallery-show {
+	position:fixed;
+	top: 10px;
+	left: 10px;
+	text-shadow: #000 0 0 1px;
+	opacity: 0.5;
+}
+.gallery-hide {
+	position:absolute;
+	.hide-interface {
+		position:relative;
+		left: 71px;
+		top: 14px;
+	}
+}
+.gallery-show i, .gallery-hide i {
+	color: #999;
+	cursor: pointer;
+}
+gallery-show i:hover, gallery-hide i:hover {
+	color: white;
+	cursor: pointer;
+}
+#controls-wrapper {
+	ul.hp-controls {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+		li {
+			background: none;
+			background-color: grey;
+			border-radius: 4px;
+			width: 15px;
+			height: 15px;
+			text-indent: -999em;
+			letter-spacing: -999em;
+			display: inline-block;
+			margin-right: 5px;
+		}
+		li:hover, li.selected {
+			background-color: white;
+			cursor: pointer;
+		}
+	}
+}
+.gallery-extra {
+	position: absolute;
+	z-index: 9;
+	a {
+		position: absolute;
+		color: #999;
+		cursor: pointer;
+	}
+	.hide-interface {
+		top: 15px;
+		left: 73px;
+	}
+	.prev-img, .next-img {
+		top: 178px;
+		left: 77px;
+	}
+	.prev-img {
+		left: 57px;
+	}
+	
+}
+
+
+
+/* Apartments
+============================================================================*/
+
+.apartment-nav {
+	ul {
+		margin-bottom: 0;
+		padding-left: 0;
+	}
+	li {
+		list-style: none;
+		display: inline-block;
+		padding: 3px 6px;
+		background-color: white;
+		border-radius: 2px;
+		margin-right: 6px;
+		margin-bottom: 9px;
+		width: 26px;
+		text-align: center;
+		color: #777;
+		span {
+			cursor: pointer;
+		}
+	}
+	li:hover {
+		color: black;
+	}
+} 
+
+
+/* Carousel
+============================================================================*/
+.carousel-indicators {
+  bottom: 5px;
+}
+
+.carousel-caption {
+  position: static;
+  text-align: left;
+  background-color: gray;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+.carousel-control .prev, .carousel-control .next {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+}
+
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+}
+
+
+/* Detail
+============================================================================*/
+.detail {
+	float: left;
+	p {
+		vertical-align: top;
+	}
+	img {
+		margin-right: 15px;
+		display: inline;
+		float: left;
+		border-radius: 4px;
+	}
+}
+
+
+/* Testimonial Carousel
+============================================================================*/
+.testimonials .carousel-caption {
+  position: static;
+  padding: 20px 20%;
+  background-color: #ccc;
+  text-shadow: none;
+  color: gray;
+  text-align: center;
+  border: none;
+}
+
+
+/* Main Page Blocks
+============================================================================*/
+.main-content, .page-carousel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* Services Menu
+============================================================================*/
+#services-nav > li {
+  float: none;
+  width: 100%;
+  background-color: #ccc;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#services-nav > li > a {
+  color: #666;
+}
+
+#services-nav > li > a:hover {
+  background-color: #ccc;
+}
+
+#services-nav > li.current-menu-item > a, #services-nav > li.current-menu-item > a:hover, #services-nav > li.current-menu-item > a:focus {
+  background-color: #666;
+  color: #fff;
+}
+
+
+/* Info Boxes
+============================================================================*/
+.info-box {
+  background-color: #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  h2 {
+	  margin-top: 0;
+	}
+	input {
+	  text-align: center;
+	}
+}
+
+
+/* Blog
+============================================================================*/
+#respond input, #respond textarea {
+  text-align: left;
+}
+
+
+/* Contact Page
+============================================================================*/
+.social-links li {
+  padding: 0 3px;
+}
+.social-links li:first-child {
+  padding-left: 0;
+}
+
+input, textarea {
+	width: 100%;
+	border: none;
+	border-radius: 2px;
+	color: black;
+	padding: 3px 6px;
+}
+
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+	text-align: left;
+	width: auto;
+}
+
+input:focus, textarea:focus {
+	outline: none;
+}
+
+textarea {
+	resize: none;
+}
+
+/* Flexible iFrame
+============================================================================*/
+.flexible-container {
+  position: relative;
+  padding-bottom: 70%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.flexible-container iframe,
+.flexible-container object,
+.flexible-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Footer
+============================================================================*/
+#footer {
+	margin-top: 60px;
+	.navbar {
+		padding-left: 15px;
+	}
+}
+
+#site-copyright {
+  padding: 10px 0;
+  display: block;
+}
+
+#footer-nav {
+	> li {
+		text-align: center;
+	  margin: 10px 10px 10px 0;
+		> a {
+		  padding: 0;
+		  color: #666;
+		}
+		> a:hover {
+		  text-decoration: underline;
+		  color: #ccc;
+		}
+	}
+}
+
+
+/* Sticky Footer
+============================================================================*/
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -140px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 80px;
+}
+
+/* Sticky Footer Responsive */
+@media (max-width: 767px) {
+	#wrap {
+	  margin: 0 auto -240px;
+	}
+	#push, #footer {
+		height: 180px;
+	}
+}
+
+
+/* Import Responsive LAST
+============================================================================*/
+
+@import 'responsive';
